@@ -1,8 +1,6 @@
 All:
 	ls
-assm:
-	gcc -o assembler assembler.c src/*.c
+comp:
+	gcc -o compailer compailer.c src/*.c
 proc:
-	make assm
-	./assembler
 	gcc -o processor processor.c src/*.c 

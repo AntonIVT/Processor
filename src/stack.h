@@ -53,8 +53,6 @@ typedef enum Stack_code_error_en { STACK_OVERFLOW, WRONG_POINTER,
 typedef enum Stack_code_en { STACK_OK, STACK_ERROR } Stack_code;                                   
                                                                                                     
 typedef enum Hash_info_en { HASH_UPDATE, HASH_CHECK } Hash_info;       
-                                                                                                    
-typedef enum Func_name_en { CONSTRUCT, RESIZEUP, RESIZEDOWN, PUSH, BACK, POP, DESTRUCT } Func_name; 
 
 //-------------------------------------------------------------------------------------------------------------------------------
 

@@ -45,7 +45,7 @@ Stack_code StackConstruct(struct Stack_t **thou, size_t capacity)
     (*thou)->hash_data   = 0;
     (*thou)->hash_struct = 0;
     
-    if (StackVerify(*thou, HASH_UPDATE, CONSTRUCT, __LINE__) == STACK_OK)
+    if (StackVerify(*thou, HASH_UPDATE, __FUNCTION__, __LINE__) == STACK_OK)
         return STACK_OK;
     else
         return STACK_ERROR;
@@ -57,7 +57,7 @@ Stack_code StackDestruct(struct Stack_t *thou)
 {
     assert(thou != NULL);
     
-    if (StackVerify(thou, HASH_CHECK, CONSTRUCT, __LINE__) == STACK_ERROR)
+    if (StackVerify(thou, HASH_CHECK, __FUNCTION__, __LINE__) == STACK_ERROR)
         return STACK_ERROR;
     
     free(thou);
@@ -72,7 +72,7 @@ Stack_code StackResizeUp(struct Stack_t **thou)
     assert(thou  != NULL);
     assert(*thou != NULL);
     
-    if (StackVerify(*thou, HASH_CHECK, RESIZEUP, __LINE__) == STACK_ERROR)
+    if (StackVerify(*thou, HASH_CHECK, __FUNCTION__, __LINE__) == STACK_ERROR)
         return STACK_ERROR;
     
     size_t tmp_size = ((*thou)->capacity > 0 ? (*thou)->capacity : 1);
@@ -95,7 +95,7 @@ Stack_code StackResizeUp(struct Stack_t **thou)
         
         *((unsigned long long *)((*thou)->data + (*thou)->capacity)) = CANARY;
             
-        if (StackVerify(*thou, HASH_UPDATE, RESIZEUP, __LINE__) == STACK_OK)
+        if (StackVerify(*thou, HASH_UPDATE, __FUNCTION__, __LINE__) == STACK_OK)
             return STACK_OK;
         else
             return STACK_ERROR;
@@ -114,7 +114,7 @@ Stack_code StackResizeDown(struct Stack_t **thou)
     assert(thou  != NULL);
     assert(*thou != NULL);
     
-    if (StackVerify(*thou, HASH_CHECK, RESIZEDOWN, __LINE__) == STACK_ERROR)
+    if (StackVerify(*thou, HASH_CHECK, __FUNCTION__, __LINE__) == STACK_ERROR)
         return STACK_ERROR;
     
     struct Stack_t *check = (struct Stack_t *)realloc(*thou, sizeof(struct Stack_t) + sizeof(StElem_t) * (((*thou)->capacity) / 2) + sizeof(unsigned long long));  
@@ -126,7 +126,7 @@ Stack_code StackResizeDown(struct Stack_t **thou)
         (*thou)->capacity = (*thou)->capacity / 2;
         *((unsigned long long *)((*thou)->data + (*thou)->capacity)) = CANARY;
         
-        if (StackVerify(*thou, HASH_UPDATE, RESIZEDOWN, __LINE__) == STACK_OK)
+        if (StackVerify(*thou, HASH_UPDATE, __FUNCTION__, __LINE__) == STACK_OK)
             return STACK_OK;
         else
             return STACK_ERROR;
@@ -145,7 +145,7 @@ Stack_code StackPush(struct Stack_t **thou, StElem_t value)
     assert(thou  != NULL);
     assert(*thou != NULL);
     
-    if (StackVerify(*thou, HASH_CHECK, PUSH, __LINE__) == STACK_ERROR)
+    if (StackVerify(*thou, HASH_CHECK, __FUNCTION__, __LINE__) == STACK_ERROR)
         return STACK_ERROR;
         
     size_t size_tmp = (*thou)->size;                
@@ -158,7 +158,7 @@ Stack_code StackPush(struct Stack_t **thou, StElem_t value)
         (*thou)->data[size_tmp] = value;                                  
         (*thou)->size++;                                                 
                                                                           
-        if (StackVerify(*thou, HASH_UPDATE, PUSH, __LINE__) == STACK_OK)  
+        if (StackVerify(*thou, HASH_UPDATE, __FUNCTION__, __LINE__) == STACK_OK)  
             return STACK_OK;
         else
             return STACK_ERROR;
@@ -167,7 +167,7 @@ Stack_code StackPush(struct Stack_t **thou, StElem_t value)
     {
         (*thou)->data[size_tmp] = value;
         ((*thou)->size)++;
-        if (StackVerify(*thou, HASH_UPDATE, PUSH, __LINE__) == STACK_OK)
+        if (StackVerify(*thou, HASH_UPDATE, __FUNCTION__, __LINE__) == STACK_OK)
             return STACK_OK;
         else
             return STACK_ERROR;
@@ -184,7 +184,7 @@ Stack_code StackPop(struct Stack_t **thou, StElem_t *value)
     assert(*thou != NULL);
     assert(value != NULL);
     
-    if (StackVerify(*thou, HASH_CHECK, POP, __LINE__) == STACK_ERROR)
+    if (StackVerify(*thou, HASH_CHECK, __FUNCTION__, __LINE__) == STACK_ERROR)
         return STACK_ERROR;
     
     size_t size_tmp = (*thou)->size;
@@ -196,7 +196,7 @@ Stack_code StackPop(struct Stack_t **thou, StElem_t *value)
         (*thou)->data[size_tmp - 1] = POISON;
         ((*thou)->size)--;
         
-        if (StackVerify(*thou, HASH_UPDATE, POP, __LINE__) == STACK_ERROR)
+        if (StackVerify(*thou, HASH_UPDATE, __FUNCTION__, __LINE__) == STACK_ERROR)
             return STACK_ERROR;
         
         if ((*thou)->capacity > 4 * (*thou)->size)
@@ -205,7 +205,7 @@ Stack_code StackPop(struct Stack_t **thou, StElem_t *value)
                 return STACK_ERROR;
         }
         
-        if (StackVerify(*thou, HASH_UPDATE, POP, __LINE__) == STACK_OK)
+        if (StackVerify(*thou, HASH_UPDATE, __FUNCTION__, __LINE__) == STACK_OK)
             return STACK_OK;
         else
             return STACK_ERROR;
@@ -223,7 +223,7 @@ Stack_code StackBack(struct Stack_t *thou, StElem_t *value)
     assert(thou  != NULL);
     assert(value != NULL);
     
-    if (StackVerify(thou, HASH_CHECK, BACK, __LINE__) == STACK_ERROR)
+    if (StackVerify(thou, HASH_CHECK, __FUNCTION__, __LINE__) == STACK_ERROR)
         return STACK_ERROR;
     
     size_t size_tmp = thou->size;

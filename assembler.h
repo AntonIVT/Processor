@@ -2,13 +2,13 @@
 #include <stdio.h>
 #include "src/str.h"
 
-enum Command_en {PUSH_ASS = 1,
-                 ADD_ASS  = 2,
-                 SUB_ASS  = 3,
-                 MUL_ASS  = 4,
-                 DIV_ASS  = 5,
-                 OUT_ASS  = 6,
-                 HET_ASS  = 7};
+enum Command_en {PUSH = 1, // Действия с числами
+                 ADD  = 2,
+                 SUB  = 3,
+                 MUL  = 4,
+                 DIV  = 5,
+                 OUT  = 0xC1, // Общие Команды (Commands)
+                 HET  = 0xC2};
 
 /*! 
     Print in bytecode file (binary)

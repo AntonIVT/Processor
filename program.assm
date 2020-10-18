@@ -1,0 +1,7 @@
+push 1
+push 12.4
+add
+push 10
+mul
+out
+het

@@ -64,36 +64,9 @@ static unsigned long long StackHashStruct(struct Stack_t *thou)
 
 //-------------------------------------------------------------------------------------------------------------------------------
 
-void StackLog(struct Stack_t *thou, Func_name func, Stack_code_error err, int line)
+void StackLog(struct Stack_t *thou, const char* function, Stack_code_error err, int line)
 {   
     assert(thou != NULL);
-    
-    const char * func_name = NULL;
-    
-    switch (func) 
-    {
-    case CONSTRUCT :
-        func_name = "StackConstruct";
-        break;
-    case RESIZEUP : 
-        func_name = "StackResizeUp";
-        break;
-    case RESIZEDOWN : 
-        func_name = "StackResizeDown";
-        break;
-    case PUSH : 
-        func_name = "StackPush";
-        break;
-    case BACK : 
-        func_name = "StackBack";
-        break;
-    case POP : 
-        func_name = "StackPop";
-        break;
-    default:
-        func_name = "Wrong name of the functions :'(";
-        break;
-    }
     
     FILE * log = fopen("log.txt", "ab");
     
@@ -104,7 +77,7 @@ void StackLog(struct Stack_t *thou, Func_name func, Stack_code_error err, int li
                  "##################################################### \n"
                  "##################################################### \n\n\n");
     
-    fprintf(log, "########## FUNCTION %s CRASHED  \n", func_name);
+    fprintf(log, "########## FUNCTION %s CRASHED  \n", function);
     
     fprintf(log, "########## LINE IN FUNCTION = %i\n", line);
     
@@ -218,13 +191,13 @@ int IsPointerOK(void *stk)
 
 //-------------------------------------------------------------------------------------------------------------------------------
 
-Stack_code StackVerify(struct Stack_t *thou, Hash_info hash_mode, Func_name func, int line) 
+Stack_code StackVerify(struct Stack_t *thou, Hash_info hash_mode, const char* function, int line) 
 {   
     /// Checking wrong pointer
     if (!IsPointerOK(thou))
     {
         StackPrintProblem(WRONG_POINTER);
-        StackLog(thou, func, WRONG_POINTER, line);
+        StackLog(thou, function, WRONG_POINTER, line);
         return STACK_ERROR; 
     }
     if (hash_mode == HASH_CHECK)
@@ -233,14 +206,14 @@ Stack_code StackVerify(struct Stack_t *thou, Hash_info hash_mode, Func_name func
         if (thou->hash_struct != StackHashStruct(thou))
         {
             StackPrintProblem(WRONG_HASH_STRUCT);
-            StackLog(thou, func, WRONG_HASH_STRUCT, line);
+            StackLog(thou, function, WRONG_HASH_STRUCT, line);
             return STACK_ERROR;
         }
         /// Checking hash of data
         if (thou->hash_data   != StackHashData(thou))
         {
             StackPrintProblem(WRONG_HASH_DATA);
-            StackLog(thou, func, WRONG_HASH_DATA, line);
+            StackLog(thou, function, WRONG_HASH_DATA, line);
             return STACK_ERROR;
         }
     }
@@ -248,21 +221,21 @@ Stack_code StackVerify(struct Stack_t *thou, Hash_info hash_mode, Func_name func
     if (thou->size > thou->capacity)           
     {
         StackPrintProblem(STACK_OVERFLOW);
-        StackLog(thou, func, STACK_OVERFLOW, line);
+        StackLog(thou, function, STACK_OVERFLOW, line);
         return STACK_ERROR;
     }    
     /// Checking left canary
     if (thou->left_canary != CANARY)  
     {
         StackPrintProblem(LEFT_CANARY_DEAD);
-        StackLog(thou, func, LEFT_CANARY_DEAD, line);
+        StackLog(thou, function, LEFT_CANARY_DEAD, line);
         return STACK_ERROR;
     }   
     /// Checking right canary
     if (*((unsigned long long *)(thou->data + thou->capacity)) != CANARY) 
     {
         StackPrintProblem(RIGHT_CANARY_DEAD);
-        StackLog(thou, func, RIGHT_CANARY_DEAD, line);
+        StackLog(thou, function, RIGHT_CANARY_DEAD, line);
         return STACK_ERROR;
     }
     /// Updationg hash

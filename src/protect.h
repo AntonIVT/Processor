@@ -8,7 +8,7 @@ Stack_code StackFindDestruct();
 
 //-------------------------------------------------------------------------------------------------------------------------------
 
-void StackLog(struct Stack_t *thou, Func_name func, Stack_code_error err, int line);
+void StackLog(struct Stack_t *thou, const char* function, Stack_code_error err, int line);
 
 //-------------------------------------------------------------------------------------------------------------------------------
 
@@ -28,7 +28,7 @@ int IsPointerOK(void *stk);
 
 //-------------------------------------------------------------------------------------------------------------------------------
 
-Stack_code StackVerify(struct Stack_t *thou, Hash_info hash_mode, Func_name func, int line);
+Stack_code StackVerify(struct Stack_t *thou, Hash_info hash_mode, const char* function, int line);
 
 //-------------------------------------------------------------------------------------------------------------------------------
 

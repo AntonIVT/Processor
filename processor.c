@@ -23,13 +23,19 @@ int main(int argc, char **argv)
     char *curr_ptr = buffer;
     int count_bytes = FileSize(bytecode);
     
-    const char *signature = curr_ptr;
+    char *signature = (char *)calloc(3, sizeof(char));
+    if (count_bytes > 3)
+        strncpy(signature, curr_ptr, 2);
+    else
+        printf("BAN\n");
+    
     curr_ptr += 2;
     char version = *curr_ptr;
     curr_ptr++;
     
-    if (!strcmp(signature, "UT"))
+    if (strcmp(signature, "UT") != 0)
     {
+        printf("%s\n", signature);
         printf("SORRY, WRONG SIGNATURE, CANT EXECUTE :(((\n");
         return 0;
     }

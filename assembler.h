@@ -9,13 +9,13 @@ enum Command_en {PUSH = 1, // Действия с числами
                  DIV  = 5,
                  OUT  = 0xC1, // Общие Команды (Commands)
                  HET  = 0xC2};
+                 
+void Print_Command(char command, FILE* bytecode);
 
-/*! 
-    Print in bytecode file (binary)
-*/
-void Print(long long cond, FILE* bytecode);
+void Print_Value(double value, FILE *bytecode);
 
-/*!
-    Translate to bytecode and print it 
-*/
-void Translator(struct Text_t* assm_file, FILE* bytecode);
+void Assembler(const char* assm_file, const char* bytecode_file);
+
+void Disassembler(const char *assm_file, const char *bytecode_file);
+
+void Listing(const char *bytecode_file, const char *listing_file);

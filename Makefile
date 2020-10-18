@@ -1,6 +1,6 @@
 All:
 	ls
 comp:
-	gcc -o compailer compailer.c src/*.c
+	gcc -o compiler compiler.c src/*.c
 proc:
 	gcc -o processor processor.c src/*.c 

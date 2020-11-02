@@ -25,7 +25,7 @@ Stack_code StackFindDestruct()
 //-------------------------------------------------------------------------------------------------------------------------------
 
 static unsigned long long StackHashData(struct Stack_t *thou)
-{      
+{   
     assert(thou != NULL);
     
     unsigned long long s1 = 1;
@@ -111,7 +111,7 @@ void StackLog(struct Stack_t *thou, const char* function, Stack_code_error err, 
     
     fprintf(log, "########## STACK INSIDE : \n");
     for (int i = 0; i < thou->size && i < 100; i++)
-        fprintf(log, "### data[%3i] = "ELEM"\n", i, thou->data[i]);
+        fprintf(log, "### data[%3i] = " ELEM "\n", i, thou->data[i]);
         
     for (int i = thou->size; i < thou->capacity && i < 100; i++)
         fprintf(log, "### data[%3i] = %X\n", i, thou->data[i]);
@@ -193,6 +193,7 @@ int IsPointerOK(void *stk)
 
 Stack_code StackVerify(struct Stack_t *thou, Hash_info hash_mode, const char* function, int line) 
 {   
+    return STACK_OK;
     /// Checking wrong pointer
     if (!IsPointerOK(thou))
     {
@@ -200,7 +201,7 @@ Stack_code StackVerify(struct Stack_t *thou, Hash_info hash_mode, const char* fu
         StackLog(thou, function, WRONG_POINTER, line);
         return STACK_ERROR; 
     }
-    if (hash_mode == HASH_CHECK)
+    /*if (hash_mode == HASH_CHECK)
     {
         /// Checking hash of structure
         if (thou->hash_struct != StackHashStruct(thou))
@@ -216,7 +217,7 @@ Stack_code StackVerify(struct Stack_t *thou, Hash_info hash_mode, const char* fu
             StackLog(thou, function, WRONG_HASH_DATA, line);
             return STACK_ERROR;
         }
-    }
+    }*/
     /// Checking if size > capacity
     if (thou->size > thou->capacity)           
     {
@@ -239,11 +240,11 @@ Stack_code StackVerify(struct Stack_t *thou, Hash_info hash_mode, const char* fu
         return STACK_ERROR;
     }
     /// Updationg hash
-    if (hash_mode == HASH_UPDATE)
+    /*if (hash_mode == HASH_UPDATE)
     {
         thou->hash_struct = StackHashStruct(thou);
         thou->hash_data   = StackHashData(thou);
-    }    
+    }*/
     
     return STACK_OK;
 }

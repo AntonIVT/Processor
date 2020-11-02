@@ -1,0 +1,29 @@
+    call   main  // Аниме, лолб0)00)))
+    het 
+fib:
+    push rbx
+    push rcx
+    jae return
+    
+    push rbx
+    out
+    push rbx
+    push rbx
+    push rax
+    add
+    pop rbx
+    pop rax
+    call fib
+    jmp return
+    
+return:
+    ret
+    
+main:
+    push 1
+    push 1
+    pop rax
+    pop rbx
+    in rcx
+    call fib
+    ret

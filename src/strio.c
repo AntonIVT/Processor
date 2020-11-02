@@ -28,7 +28,7 @@ char* FileToBuffer(FILE* text)
 
     fseek(text, 0, SEEK_SET); //Puts pointer in file to the start
 
-    char *buffer = (char *)calloc(size, sizeof(char));
+    char *buffer = (char *)calloc(size + 1, sizeof(char));
     assert(buffer != NULL);
 
     fread(buffer, sizeof(char), size, text);
@@ -40,7 +40,6 @@ char* FileToBuffer(FILE* text)
 int CountOfLinesInBuffer(char *buffer)
 {
     int Count = 0; 
-    
     char *begin = buffer;
     char *end   = NULL;
 

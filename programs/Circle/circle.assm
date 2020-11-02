@@ -1,0 +1,190 @@
+call main  
+het
+
+return:
+    ret
+
+main:
+    in rdx     // Радиус 
+    crtw       // Создаем окно
+    
+    call radius
+    
+    draw       // Рисуем в окно
+    show
+    ret
+
+radius:            // Изменение радиуса
+
+    push 0
+    pop rcx       // Угол
+    call angle
+    
+    push rdx
+    push 1
+    sub
+    pop rdx
+    
+    push 0
+    push rdx
+    jae return
+    
+    jmp radius
+
+angle:           // Изменение угла
+    
+    call make_dot
+        
+    push 0.002
+    push rcx
+    add
+    pop rcx
+
+    push rcx
+    push 1.57
+    jae return
+    
+    jmp angle
+
+make_dot:
+
+    push rcx
+    sin
+    push rdx
+    mul
+    pop rxx
+
+    push rcx
+    cos
+    push rdx
+    mul
+    pop ryx     
+
+    call translate_dot  // (x, y)
+    
+    push ryx 
+    push -1
+    mul
+    pop ryx
+    
+    push rxx
+    push -1
+    mul
+    pop rxx
+    
+    call translate_dot  // (-x, -y)
+    
+    push ryx 
+    push rxx
+    
+    pop ryx
+    
+    push -1
+    mul
+    pop rxx
+    
+    call translate_dot // (y, -x)
+    
+    push ryx 
+    push -1
+    mul
+    pop ryx
+    
+    push rxx
+    push -1
+    mul
+    pop rxx
+    
+    call translate_dot // (-y, x)
+    
+    ret
+
+translate_dot:    // Ставит в rax место, где нужно нарисовать
+    
+    push ryx    // Округляем y и x
+    round
+    pop ryx
+
+    push rxx
+    round
+    pop rxx
+    
+    push rxx  // Ставим координаты в центр
+    push 250
+    add
+
+    push ryx
+    push 250
+    add
+    
+    push 500     // Ширина экрана
+    mul
+    
+    add
+    push 250000  // Начало видеопамяти
+    add
+    pop rax
+    
+    call draw_dot
+    
+    ret
+
+draw_dot:       // Рисует пиксель В стеке : x, y 
+    
+    push rxx    // Координата x (Красный)
+    push 250
+    add
+
+    push 255
+    mul
+    push 500
+    div
+    round
+    pop rrc
+    
+    push ryx    // Координата y (Зеленый)
+    push 250
+    add
+    
+    push 255
+    mul
+    push 500
+    div
+    round
+    pop rgc
+
+    push ryx     // y и x -> (Cиний)
+    push 250
+    add
+
+    push rxx
+    push 250
+    add
+    
+    mul
+    push 255
+    mul
+    push 500
+    cpy
+    mul 
+    div
+    round
+    pop rbc
+    
+    push rrc
+    
+    push rgc
+    push 256
+    mul
+    add
+    
+    push rbc
+    push 256
+    cpy
+    mul
+    mul
+    add 
+    
+    pop [rax]
+    
+    ret

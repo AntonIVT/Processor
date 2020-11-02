@@ -2,20 +2,23 @@
 #include <stdio.h>
 #include "src/str.h"
 
-enum Command_en {PUSH = 1, // Действия с числами
-                 ADD  = 2,
-                 SUB  = 3,
-                 MUL  = 4,
-                 DIV  = 5,
-                 OUT  = 0xC1, // Общие Команды (Commands)
-                 HET  = 0xC2};
-                 
-void Print_Command(char command, FILE* bytecode);
+const int ram_size = 500000;
 
-void Print_Value(double value, FILE *bytecode);
+const int reg_count = 9;
 
-void Assembler(const char* assm_file, const char* bytecode_file);
+//#define WIN
 
-void Disassembler(const char *assm_file, const char *bytecode_file);
+struct label
+{
+    char *name;
+    int offset;
+};
 
-void Listing(const char *bytecode_file, const char *listing_file);
+enum arg_type 
+{
+    NONE = 0,
+    REGISTER = 1, 
+    LABEL = 2, 
+    MULTI = 3,   // For push
+    VALUE = 8,
+};

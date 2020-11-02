@@ -1,0 +1,144 @@
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\anton\VS code\Processor\bin_win\processor.exe, файл: C:\Users\anton\Desktop\TXLib\TXLib.h, строка: 8340, функция: HWND__* {anonymous}::TX::txCreateWindow(double, double, bool),
+
+Сообщение: Окно рисования уже создано!
+
+#1: TXLib [Ver: 00173a, Rev: 168, Date: 2020-08-13 00:46:05 +0400], Instance: 0x00000000005638E0 (64-bit), Flags: CMdRe0, Thread: 0x32A8 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x000000000040ACF2 in C:\Users\anton\VS code\Processor\bin_win\processor.exe: (anonymous namespace)::TX::_txError()
+# 1 0x0000000000402E02 in C:\Users\anton\VS code\Processor\bin_win\processor.exe: (anonymous namespace)::TX::txCreateWindow()
+# 2 0x000000000041DD70 in C:\Users\anton\VS code\Processor\bin_win\processor.exe: Execute()
+# 3 0x000000000041DE7F in C:\Users\anton\VS code\Processor\bin_win\processor.exe: main()
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 168, Date: 2020-08-13 00:46:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\anton\Desktop\TXLib\TXLib.h
+Compiled:	Oct 30 2020 11:25:26, GNU g++ 9.2.0, std=201402L, MinGW-W64 Runtime 7.0.0 (alpha - rev. 0) 0000-00-00, 64-bit, Debug
+Started:	Oct 30 2020 11:31:35
+
+Run file:	C:\Users\anton\VS code\Processor\bin_win\processor.exe
+Directory:	C:\Users\anton\VS code\Processor\programs\Ring_win
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\anton\VS code\Processor\bin_win\processor.exe, файл: C:\Users\anton\Desktop\TXLib\TXLib.h, строка: 8419, функция: bool {anonymous}::TX::txSetDefaults(HDC),
+
+Сообщение: Обнаружен нулевой или ложный результат.
+
+#1: TXLib [Ver: 00173a, Rev: 168, Date: 2020-08-13 00:46:05 +0400], Instance: 0x00000000005638E0 (64-bit), Flags: CMdre0, Thread: 0x107C (Canvas), GetLastError(): 1400 (Недопустимый дескриптор окна). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x000000000040ACF2 in C:\Users\anton\VS code\Processor\bin_win\processor.exe: (anonymous namespace)::TX::_txError()
+# 1 0x0000000000403391 in C:\Users\anton\VS code\Processor\bin_win\processor.exe: (anonymous namespace)::TX::txSetDefaults()
+# 2 0x0000000000407B7D in C:\Users\anton\VS code\Processor\bin_win\processor.exe: (anonymous namespace)::TX::_txCanvas_OnCREATE()
+# 3 0x000000000040772A in C:\Users\anton\VS code\Processor\bin_win\processor.exe: (anonymous namespace)::TX::_txCanvas_WndProc()
+# 4 0x00007FFFC6FAE6D8 in C:\WINDOWS\System32\USER32.dll: CallWindowProcW()
+# 5 0x00007FFFC6FAE25C in C:\WINDOWS\System32\USER32.dll: DispatchMessageW()
+# 6 0x00007FFFC6FC2A77 in C:\WINDOWS\System32\USER32.dll: InitDManipHook()
+# 7 0x00007FFFC782FBC4 in C:\WINDOWS\SYSTEM32\ntdll.dll: KiUserCallbackDispatcher()
+# 8 0x00007FFFC4F31EC4 in C:\WINDOWS\System32\win32u.dll: NtUserCreateWindowEx()
+# 9 0x00007FFFC6FA7C0B in C:\WINDOWS\System32\USER32.dll: CreateWindowExW()
+#10 0x00007FFFC6FA77D8 in C:\WINDOWS\System32\USER32.dll: CreateWindowExW()
+#11 0x00007FFFC6FA3B12 in C:\WINDOWS\System32\USER32.dll: CreateWindowExA()
+#12 0x0000000000406AC4 in C:\Users\anton\VS code\Processor\bin_win\processor.exe: (anonymous namespace)::TX::_txCanvas_CreateWindow()
+#13 0x00000000004064E7 in C:\Users\anton\VS code\Processor\bin_win\processor.exe: (anonymous namespace)::TX::_txCanvas_ThreadProc()
+#14 0x00007FFFC717AF5A in C:\WINDOWS\System32\msvcrt.dll: beginthreadex()
+#15 0x00007FFFC717B02C in C:\WINDOWS\System32\msvcrt.dll: endthreadex()
+#16 0x00007FFFC66C7034 in C:\WINDOWS\System32\KERNEL32.dll: BaseThreadInitThunk()
+#17 0x00007FFFC77DCEC1 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlUserThreadStart()
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 168, Date: 2020-08-13 00:46:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\anton\Desktop\TXLib\TXLib.h
+Compiled:	Oct 30 2020 11:32:36, GNU g++ 9.2.0, std=201402L, MinGW-W64 Runtime 7.0.0 (alpha - rev. 0) 0000-00-00, 64-bit, Debug
+Started:	Oct 30 2020 11:33:18
+
+Run file:	C:\Users\anton\VS code\Processor\bin_win\processor.exe
+Directory:	C:\Users\anton\VS code\Processor\programs\Ring_win
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ...
+
+пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: C:\Users\anton\VS code\Processor\bin_win\processor.exe, пїЅпїЅпїЅпїЅ: C:\Users\anton\Desktop\TXLib\TXLib.h, пїЅпїЅпїЅпїЅпїЅпїЅ: 8419, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: bool {anonymous}::TX::txSetDefaults(HDC),
+
+пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+
+#2: TXLib [Ver: 00173a, Rev: 168, Date: 2020-08-13 00:46:05 +0400], Instance: 0x00000000005658E0 (64-bit), Flags: CMdre0, Thread: 0x2658 (Canvas), GetLastError(): 1400 (Недопустимый дескриптор окна). 
+
+--------------------------------------------------
+пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ:
+
+ 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 168, Date: 2020-08-13 00:46:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\anton\Desktop\TXLib\TXLib.h
+Compiled:	Oct 30 2020 11:38:07, GNU g++ 9.2.0, std=201402L, MinGW-W64 Runtime 7.0.0 (alpha - rev. 0) 0000-00-00, 64-bit, Debug
+Started:	Oct 30 2020 11:54:06
+
+Run file:	C:\Users\anton\VS code\Processor\bin_win\processor.exe
+Directory:	C:\Users\anton\VS code\Processor\programs\Ring_win
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ:
+
+пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: C:\Users\anton\VS code\Processor\bin_win\processor.exe, пїЅпїЅпїЅпїЅ: C:\Users\anton\Desktop\TXLib\TXLib.h, пїЅпїЅпїЅпїЅпїЅпїЅ: 8815, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: void {anonymous}::TX::_txPauseBeforeTermination(HWND),
+
+пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+
+#3: TXLib [Ver: 00173a, Rev: 168, Date: 2020-08-13 00:46:05 +0400], Instance: 0x00000000005658E0 (64-bit), Flags: CMdre0, Thread: 0x2658 (Canvas). 
+
+--------------------------------------------------
+пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ:
+
+ 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 168, Date: 2020-08-13 00:46:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\anton\Desktop\TXLib\TXLib.h
+Compiled:	Oct 30 2020 11:38:07, GNU g++ 9.2.0, std=201402L, MinGW-W64 Runtime 7.0.0 (alpha - rev. 0) 0000-00-00, 64-bit, Debug
+Started:	Oct 30 2020 11:54:05
+
+Run file:	C:\Users\anton\VS code\Processor\bin_win\processor.exe
+Directory:	C:\Users\anton\VS code\Processor\programs\Ring_win
+
+--------------------------------------------------

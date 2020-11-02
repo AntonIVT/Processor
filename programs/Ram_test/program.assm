@@ -1,0 +1,36 @@
+    call main
+    het
+    
+fill_ram:
+    push rax
+    push rbx
+    jbe return //Если rax <= rbx, то return
+    in rcx     //Временная переменная
+    push rcx
+    pop [rbx]  //
+    
+    push rbx
+    push 1
+    add
+    pop rbx
+    call fill_ram  
+    jmp return
+
+main:
+    in rax /Количество чисел
+    push 0
+    pop rbx /Счетчик в массиве
+    call fill_ram //Заполняем массив ?))
+    //in rdx
+    in rax        //Вывести максимум i-ое число
+    push rax
+    push 1
+    sub 
+    pop rax
+    push [rax]
+    out
+    ret
+    
+return:
+    ret
+    

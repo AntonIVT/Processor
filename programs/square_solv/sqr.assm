@@ -1,0 +1,125 @@
+    call main
+    het
+
+main:
+    in rax
+    in rbx
+    in rcx
+    push rax
+    push 0
+    je line_eq
+    
+    jmp square_eq
+    
+line_eq:
+    push rcx
+    push 0
+    je c_zero
+    
+    push rbx
+    push 0
+    je no_roots
+    
+    push rcx
+    push -1
+    mul
+    push rbx
+    div
+    pop rxx  // 1 корень
+    jmp one_root
+
+square_eq:
+    push rbx
+    cpy
+    mul
+    push 4
+    push rax
+    mul
+    push rcx
+    mul
+    sub
+    pop rdx
+    
+    push rdx
+    push 0
+    je d_zero
+    
+    push rdx
+    push 0
+    jb no_roots
+    
+    jmp two_roots
+
+d_zero:
+    push rbx
+    push -1
+    mul
+    push rax
+    push 2
+    mul
+    div
+    pop rxx
+    jmp one_root
+
+c_zero:
+    push rbx
+    push 0
+    je infinite_roots
+    
+    push 0
+    pop rxx
+    jmp one_root
+
+infinite_roots:
+    push -1
+    out
+    ret
+    
+no_roots:
+    push 0
+    out
+    ret
+    
+one_root:    // rxx
+    push 1
+    out
+    push rxx
+    out
+    ret
+    
+two_roots:   // rxx и ryx
+    push rdx
+    push 0.5
+    pow
+    pop rdx  // Корень из дискра
+    
+    push rbx
+    push -1
+    mul
+    push rdx
+    add
+    push rax
+    push 2
+    mul
+    div
+    pop rxx
+    
+    push rbx
+    push -1
+    mul
+    push rdx
+    sub
+    push rax
+    push 2
+    mul
+    div
+    pop ryx
+    
+    push 2
+    out
+    push rxx
+    out
+    push ryx
+    out
+    
+    ret

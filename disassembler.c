@@ -47,7 +47,7 @@ void PrintArg(char **rip, FILE* assm, int argument_type, int *curr_label, struct
         }
         case VALUE:
         {
-            fprintf(assm, "%lg", *((double *)*rip));
+            fprintf(assm, "%+lg", *((double *)*rip));
             *rip += sizeof(double);
             break;
         }
@@ -70,15 +70,13 @@ void PrintArg(char **rip, FILE* assm, int argument_type, int *curr_label, struct
         {
             char type = *((*rip)++);
             
-            if ((type >> 2) & 1)
+            if (type & RAM_ARG)
                 fprintf(assm, "[");
-            if ((type >> 1) & 1)
+            if (type & REG_ARG)
                 PrintArg(rip, assm, REGISTER, curr_label, labels);
-            if (type & 3 == 3)
-                fprintf(assm, "+");
-            if (type & 1)
+            if (type & IMMED_ARG)
                 PrintArg(rip, assm, VALUE, curr_label, labels);
-            if ((type >> 2) & 1)
+            if (type & RAM_ARG)
                 fprintf(assm, "]");
         }
         case NONE:

@@ -138,10 +138,7 @@ int Parsing(struct Text_t *assm, char ** words, int *count_of_labels)
     char *check = NULL;
         
     for (int i = 0; i < assm->countoflines; i++) 
-    {  
-        char* comment = strchr (assm->lines[i].pointer, '/');
-        if (*comment) *comment = 0;
-        
+    {          
         check = strtok(assm->lines[i].pointer, " \t\r");
         
         while (check != NULL)

@@ -10,7 +10,7 @@ const int REG_ARG = 2;
 const int IMMED_ARG = 1; 
 const int RAM_ARG = 4;
 
-#define WIN
+//#define WIN
 
 struct label
 {

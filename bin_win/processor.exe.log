@@ -271,3 +271,36 @@ Run file:	C:\Users\anton\VS code\Processor\bin_win\processor.exe
 Directory:	C:\Users\anton\VS code\Processor\programs\Circle_win
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\anton\VS code\Processor\bin_win\processor.exe, файл: processor.cpp, строка: 155, функция: void Execute(const char*),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "bytecode != __null".
+
+#1: TXLib [Ver: 00173a, Rev: 168, Date: 2020-08-13 00:46:05 +0400], Instance: 0x00000000005638E0 (64-bit), Flags: Cmdre0, Thread: 0x3BC4 (Main), GetLastError(): 2 (Не удается найти указанный файл), errno: 2 (No such file or directory), _doserrno: 2 (No such file or directory). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x000000000040ACC1 in C:\Users\anton\VS code\Processor\bin_win\processor.exe: (anonymous namespace)::TX::_txError()
+# 1 0x000000000041CB75 in C:\Users\anton\VS code\Processor\bin_win\processor.exe: Execute()
+# 2 0x000000000041DDD6 in C:\Users\anton\VS code\Processor\bin_win\processor.exe: main()
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 168, Date: 2020-08-13 00:46:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\anton\Desktop\TXLib\TXLib.h
+Compiled:	Nov  5 2020 13:13:02, GNU g++ 9.2.0, std=201402L, MinGW-W64 Runtime 7.0.0 (alpha - rev. 0) 0000-00-00, 64-bit, Debug
+Started:	Nov 05 2020 13:30:34
+
+Run file:	C:\Users\anton\VS code\Processor\bin_win\processor.exe
+Directory:	C:\Users\anton\VS code\Processor\programs\Circle_Win
+
+--------------------------------------------------

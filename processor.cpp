@@ -129,7 +129,6 @@ void Execute(const char *bytecode_file)
     int width = sqrt(ram_size / 2);
     int high  = sqrt(ram_size / 2);
     
-    
     #ifdef WIN
         
     #else

@@ -1,5 +1,5 @@
-call main  
-het
+    call main  
+    het
 
 return:
     ret
@@ -19,6 +19,8 @@ radius:            // Изменение радиуса
     push 0
     pop rcx       // Угол
     call angle
+    
+    draw
     
     push rdx
     push 1

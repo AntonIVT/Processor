@@ -28,8 +28,8 @@ void Listing_command(char **rip, int type, FILE *listing)
         case MULTI :
         {
             char type = *((*rip)++);
-            fprintf(listing, " (0x%d%d%d)    | ", (type >> 2 ) & 1, (type >> 1 ) & 1, type & 1);
-            if ((type >> 1 ) & 1)
+            fprintf(listing, " (0x%d%d%d)    | ", (type & RAM_ARG) / RAM_ARG, (type & REG_ARG) / REG_ARG, type & IMMED_ARG);
+            if (type & REG_ARG)
             {
                 fprintf(listing, "  %d (0x%02X) ",  **rip, **rip);
                 *rip += sizeof(char);
@@ -37,7 +37,7 @@ void Listing_command(char **rip, int type, FILE *listing)
             else
                 fprintf(listing, "%11c", ' ');
             
-            if (type & 1)
+            if (type & IMMED_ARG)
             {
                 fprintf(listing, "%4lg (0x%016llX) | ", *(double *)*rip, *(long long *)*rip);
                 *rip += sizeof(double);

@@ -54,18 +54,18 @@ DEF_CMD (PUSH, push, 1, MULTI,
     {
         double tmp = 0;
         int type = *(rip++);     
-        if ((type >> 1) & 1)
+        if (type & REG_ARG)
         {   
             tmp += registers[(int)*rip];   
             rip++;     
         }              
-        if (type & 1)                       
+        if (type & IMMED_ARG)                       
         {                                   
             tmp += *(double *)rip;          
             rip += sizeof(double);          
         }
         
-        if ((type >> 2) & 1)
+        if (type & RAM_ARG)
         {
             if (tmp >= ram_size || tmp < 0)
             {
@@ -83,17 +83,17 @@ DEF_CMD (POP,   pop,   2, MULTI,
         double tmp = 0;
         int type = *(rip++);   
         int reg = 0;
-        if ((type >> 1) & 1)
+        if (type & REG_ARG)
         {
             reg = *(rip++);
             tmp += registers[reg];
         }
-        if (type & 1)
+        if (type & IMMED_ARG)
         {
             tmp += *(double *)rip;
             rip += sizeof(double);
         }
-        if ((type >> 2) & 1)
+        if (type & RAM_ARG)
         {
             if (tmp >= ram_size || ram_size < 0)
             {

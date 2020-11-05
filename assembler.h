@@ -6,7 +6,11 @@ const int ram_size = 500000;
 
 const int reg_count = 9;
 
-//#define WIN
+const int REG_ARG = 2;
+const int IMMED_ARG = 1; 
+const int RAM_ARG = 4;
+
+#define WIN
 
 struct label
 {

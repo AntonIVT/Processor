@@ -27,8 +27,8 @@ int SetLabel(char *word, struct label* labels, int curr_label, int offset)
             
     if (islabel)                                                 
     {                                                               
-        labels[curr_label].offset = offset;                                          // Смещение относительно начала 
-        labels[curr_label].name = (char *)calloc(islabel - word + 1, sizeof(char));  // Освобождаем память под имя указатель
+        labels[curr_label].offset = offset;                                           
+        labels[curr_label].name = (char *)calloc(islabel - word + 1, sizeof(char));  
         
         strncpy(labels[curr_label].name, word, islabel - word);                     
         
@@ -81,7 +81,7 @@ void ReadArg(char **rip, int type, char *argument, struct label *labels, int cou
             {
                 if (argument[strlen(argument) - 1] == ']')
                 {
-                    **rip = **rip | 04;
+                    **rip = **rip | RAM_ARG;
                     offset_reg = 1;
                     offset_val = 1;
                 }
@@ -91,12 +91,12 @@ void ReadArg(char **rip, int type, char *argument, struct label *labels, int cou
             
             if (argument[offset_reg] == 'r')         
             {
-                **rip = **rip | 02;                    
+                **rip = **rip | REG_ARG;                    
                 offset_val = offset_reg + 3;
             }
             
             if (isdigit(argument[offset_val]) || argument[offset_val] == '-' || argument[offset_val] == '+') 
-                **rip = **rip | 01;
+                **rip = **rip | IMMED_ARG;
                 
             *rip += sizeof(char);
             
@@ -139,6 +139,9 @@ int Parsing(struct Text_t *assm, char ** words, int *count_of_labels)
         
     for (int i = 0; i < assm->countoflines; i++) 
     {  
+        char* comment = strchr (assm->lines[i].pointer, '/');
+        if (*comment) *comment = 0;
+        
         check = strtok(assm->lines[i].pointer, " \t\r");
         
         while (check != NULL)
@@ -164,7 +167,7 @@ int Parsing(struct Text_t *assm, char ** words, int *count_of_labels)
 //-----------------------------------------------------------------------------------------------------------------------
 
 #define DEF_CMD( enum_name, assm_name, enum_code, argument_type, code )              \
-    else if (!strcmp(words[curr_word], #assm_name))                                  \
+    else if (!strcmp(words[curr_word], #assm_name))                                 \
     {                                                                                \
         sprintf(rip, "%c", CMD_ ## enum_name );                                      \
         rip++;                                                                       \
@@ -191,7 +194,7 @@ char * Filling(char * bytecode_line, char ** words, struct label *labels, int co
     
     int curr_word = 0;
     
-    while (curr_word < count_of_words) 
+    while (curr_word < count_of_words)
     {   
         if (SetLabel(words[curr_word], labels, curr_label, (int)(rip - bytecode_line)))
         {
